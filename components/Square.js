@@ -9,7 +9,7 @@ export class Square extends Component{
   return (
     
       <View style={styles.container}>
-        <Image source={require('../assets/pic1.jpg')} style={styles.image}/>
+        <Image source={{uri:this.props.image}} style={styles.image}/>
       </View>
 
    )

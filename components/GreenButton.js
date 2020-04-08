@@ -8,7 +8,7 @@ export class GreenButton extends Component{
   render(){
   return (
     <View style={styles.buttonGreen}>
-     <Text style={styles.buttonText}>Start Trebling</Text>
+     <Text style={styles.buttonText}>{this.props.name}</Text>
     </View>
 
    )

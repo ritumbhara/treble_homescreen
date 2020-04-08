@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, Dimensions, ScrollView, Image, TextInput } from 'react-native';
 import * as Font from 'expo-font';
-import {Arrow} from './Arrow';
-import {Square} from './Square';
 import {GreenButton} from './GreenButton';
+import {Square} from './Square';
+import {Arrow} from './Arrow';
 
 const viewWidth = Dimensions.get("window").width;
 const viewHeight = Dimensions.get("window").height;
 
-export class HomeScreen extends Component{
+export class PublishTreble extends Component{
   constructor(props) {
     super(props);
     this.state = {
@@ -22,7 +22,6 @@ export class HomeScreen extends Component{
       'poppins-medium' : require('../assets/fonts/Poppins-Medium.ttf')
     });
     this.setState({ fontLoaded: true });
-
   }
   render(){
     if(!this.state.fontLoaded){
@@ -31,68 +30,58 @@ export class HomeScreen extends Component{
   return (
     <ScrollView fontLoaded={this.state.fontLoaded} contentContainerStyle={{backgroundColor:'#000000',flexGrow : 1,alignItems : 'flex-start', width: viewWidth, justifyContent:'space-evenly'}}>
       <Arrow/>
-      <Text style={styles.textStyle}>Name of your Treble</Text>
-      <View style={styles.nameIp}>
-        <TextInput style={styles.nameIpBox}/>
+      <View style={styles.contain}>
+        <Text style={styles.title}>{this.props.name}</Text>
+        <Text style={styles.des}>{this.props.desc}</Text>
+        <GreenButton name="Record your Treble"/>
       </View>
-      <Text style={styles.textStyle}>Your Treble Description</Text>
-      <View style={styles.desc}>
-        <TextInput style={styles.descIp}/>
-      </View>
-      <Text style={styles.textStyle}>Select your Instrument</Text>
+      <Text style={styles.textStyle}>Finished</Text>
       <View style={styles.grid}>
         <Square image="https://sc02.alicdn.com/kf/H6d2240a764b4405aa64f0bee9b0070bdN.png"/>
         <Square image="https://sc02.alicdn.com/kf/H6d2240a764b4405aa64f0bee9b0070bdN.png"/>
         <Square image="https://sc02.alicdn.com/kf/H6d2240a764b4405aa64f0bee9b0070bdN.png"/>
       </View>
-      <Text style={styles.textStyle}>Select your Band</Text>
+      <Text style={styles.textStyle}>Pending</Text>
       <View style={styles.grid}>
         <Square image="https://sc02.alicdn.com/kf/H6d2240a764b4405aa64f0bee9b0070bdN.png"/>
         <Square image="https://sc02.alicdn.com/kf/H6d2240a764b4405aa64f0bee9b0070bdN.png"/>
         <Square image="https://sc02.alicdn.com/kf/H6d2240a764b4405aa64f0bee9b0070bdN.png"/>
       </View>
-      <GreenButton name="Start Trebling"/>
+      <GreenButton name="Publish Treble"/>
     </ScrollView>
    )
   }
 }
 
 const styles = StyleSheet.create({
+ 
+  contain:{
+    display:'flex',
+    flexDirection:'column',
+    alignItems:'center',
+    justifyContent:'space-around'
+  },
+  title:{
+    fontFamily:'poppins-medium',
+    fontSize:30,
+    color:'#4AE54A',
+    textAlign:'center',
+    marginBottom:viewHeight/60
+  },
+  des:{
+    fontFamily:'poppins-medium',
+    fontSize:17,
+    color:'#ffffff',
+    textAlign:'center',
+    marginLeft:viewWidth/10,
+    marginRight:viewWidth/10,
+    marginBottom:viewHeight/20
+  },
   textStyle:{
     fontFamily:'poppins-medium',
     marginLeft: viewWidth/10,
     color:'#ffffff',
     fontSize: 23
-  },
-  nameIp:{
-    display:'flex',
-    marginLeft: viewWidth/10,
-    width:viewWidth/1.2,
-    height:viewHeight/15,
-    backgroundColor:'#FFFFFF',
-    borderRadius:10,
-    justifyContent:'center',
-  },
-  nameIpBox:{
-    fontFamily:'poppins-medium',
-    fontSize:25,
-    color:'#4AE54A',
-    marginLeft:viewWidth/30
-  },
-  desc:{
-    display:'flex',
-    marginLeft: viewWidth/10,
-    width:viewWidth/1.2,
-    height:viewHeight/5,
-    backgroundColor:'#FFFFFF',
-    borderRadius:10,
-  },
-  descIp:{
-    fontFamily:'poppins-medium',
-    fontSize:20,
-    color:'#4AE54A',
-    marginLeft:viewWidth/30,
-    marginTop:viewHeight/40
   },
   grid:{
     
